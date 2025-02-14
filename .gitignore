@@ -1,3 +1,6 @@
 .vs
+build
 env
+installers
 opencv
+opencv_contrib

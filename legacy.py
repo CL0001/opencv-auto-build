@@ -96,9 +96,6 @@ cmake_command = [
 ]
 subprocess.run(cmake_command, check=True)
 
-print(os.listdir())
-print(os.getcwd())
-print(os.path.exists("OpenCV.sln"))
 msbuild_command = [
     msbuild,
     "opencv.sln",
