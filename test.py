@@ -1,10 +1,17 @@
 import subprocess
+import os
 
-def verify_cuda_acceleration() -> None:
-    command = [
-        r"build\bin\Debug\opencv_test_cudaarithmd.exe",
-        "--gtest_filter=CUDA_Arithm/GEMM.Accuracy/0"
+def install_opencv():
+    msbuild_path = r"C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\Bin\MSBuild.exe"
+    install_vcxproj = os.path.abspath("build/INSTALL.vcxproj")
+
+    install_command = [
+        msbuild_path,
+        install_vcxproj,
+        "/p:Configuration=Release",
+        "/p:Platform=x64",
+        "/m"
     ]
-    subprocess.run(command, check=True)
+    subprocess.run(install_command, check=True)
 
-verify_cuda_acceleration()
+install_opencv()
