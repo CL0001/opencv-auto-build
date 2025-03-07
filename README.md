@@ -48,7 +48,7 @@ pip install -r requirements.txt
 
 After this, everything should be set up and ready to run:
 ```
-python lts.py
+python main.py
 ```
 
 Now, just follow the instructions in the terminal to proceed with the installation and setup.
