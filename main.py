@@ -3,6 +3,7 @@ build by following -> https://www.jamesbowley.co.uk/qmd/opencv_cuda_python_windo
 
 It is possible that OpenCV with CUDA has already precompiled binaries for windows. Check here -> https://github.com/cudawarped/opencv_contrib/releases
 """
+
 import datetime
 import shutil
 import time
@@ -86,6 +87,12 @@ def install_cudnn(install_link: str) -> None:
     if os.path.exists(cudnn_dir):
         cudnn_newest_version = os.path.join(cudnn_dir, sorted(os.listdir(cudnn_dir))[-1])
 
+    # This code finds the newest cuDNN version and moves its 'bin', 'include', and 'lib' contents
+    # into the corresponding directories of the latest CUDA Toolkit installation.  
+    #  
+    # It achieves this by listing the default installation locations of both libraries using `os.listdir()`,  
+    # sorting them, and selecting the last element to determine the latest version.  
+    # The files from the newest cuDNN version are then moved to the respective directories in the latest CUDA Toolkit.  
     move_contents(src=os.path.join(cudnn_newest_version, "bin", sorted(os.listdir(os.path.join(cudnn_newest_version, "bin")))[-1]), 
                   dst=os.path.join(cuda_toolkit_newest_version, "bin"))
     move_contents(src=os.path.join(cudnn_newest_version, "include", sorted(os.listdir(os.path.join(cudnn_newest_version, "include")))[-1]),
